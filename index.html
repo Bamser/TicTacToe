@@ -76,7 +76,15 @@
         setWinnerSequence(winner)
       }
 
+
+      const handleResetClick = () => {
+        setCells(Array.from({ length: 9 }, () => null));
+        setCurrentStep(SYMBOL_X);
+        setWinnerSequence(undefined)
+      }
+
       const winnerSymbol = winnerSequence ? cells[winnerSequence[0]] : undefined
+
 
       return (
         <div className="game">
@@ -93,6 +101,7 @@
                 {symbol ? renderSymbol(symbol) : null}</button>
             })}
           </div>
+          <button className="reset" onClick={handleResetClick}>Сбросить</button>
         </div >
       )
     }
@@ -151,6 +160,10 @@
 
     .symbol--o {
       color: green;
+    }
+
+    .reset {
+      margin-top: 10px;
     }
   </style>
 </body>
